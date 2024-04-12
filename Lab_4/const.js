@@ -2,7 +2,7 @@
 
 
 //Input
-const variant = '3122' //prompt('Input your variant :)');
+const variant = prompt('Input your variant :)');
 const canvas = document.getElementById('my-canvas');
 const ctx = canvas.getContext('2d');
 const radius = 20;
