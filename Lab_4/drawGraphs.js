@@ -2,7 +2,6 @@
 import {drawArc,drawArcArrow,drawLine,drawLineArrow,drawLoop,drawLoopArrow} from './drawLines.js'
 import { dirVertexMatrix, unDirVertexMatrix } from './conectedCoord.js';
 import { dirVertexCoord, unDirVertexCoord } from './drawVertex.js';
-import { connectedVertices } from './connectCondVertices.js';
 import { coordsOnCanvas } from './doSortedCondVertex.js';
 
 

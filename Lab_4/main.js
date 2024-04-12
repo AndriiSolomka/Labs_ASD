@@ -16,13 +16,6 @@ console.log(unDirMatrix);
 console.groupEnd()
 
 
-
-//ЗВ'ЯЗОК КООРДИНАТ ВЕРШИН З МАТРИЦЕЮ
-
-import { dirVertexCoord, unDirVertexCoord } from "./drawVertex.js";
-
-
-
 // МАЛЮВАННЯ ГРАФІВ
 import { drawDirGraph, drawUnDirGraph } from "./drawGraphs.js";
 drawDirGraph(dirMatrix);

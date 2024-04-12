@@ -15,7 +15,6 @@ import { attainabilityMat } from "./attainabilityMatrix.js";
 const transposedMatrix = transposeMatrix(attainabilityMat);
 
 
-
 function elementWiseMultiply(matrix1, matrix2) {
     const result = [];
     for (let i = 0; i < matrix1.length; i++) {
