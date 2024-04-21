@@ -12,7 +12,7 @@ let createIdentityMatrix = (size) => {
 }
 
 
-// Функция для возведения матрицы в степень
+// Возведення у степінь
 let powerMatrix = (matrix, power) => {
     if (power === 1) {
         return matrix;

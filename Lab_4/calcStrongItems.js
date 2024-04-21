@@ -23,7 +23,6 @@ const findConnections = (graph, arrays) => {
             }
         }
     }
-
     return connections;
 };
 

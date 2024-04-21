@@ -3,12 +3,12 @@ import { powerMatrix } from "./calcMatrix.js";
 
 function findPathsOfLengthTwo(matrix, squareE) {
     const paths = [];
-    for (let i = 0; i < matrix.length; i++) {
-        for (let j = 0; j < matrix.length; j++) {
-            if (matrix[i][j] === 1) {
-                for (let k = 0; k < squareE.length; k++) {
-                    if (matrix[j][k] > 0   && (k !== i || k !== j)  ) {
-                        paths.push(`(v${i + 1}, v${j + 1}, v${k + 1})`);
+    for (let i = 0; i < squareE.length; i++) {
+        for (let j = 0; j < squareE.length; j++) {
+            if (squareE[i][j]) {
+                for (let k = 0; k < matrix.length; k++) {
+                    if (matrix[k][j] > 0 && matrix[i][k] === 1 && (k !== i || k !== j)) {
+                        paths.push(`(v${i + 1}, v${k + 1}, v${j + 1})`);
                     }
                 }
             }
@@ -16,7 +16,6 @@ function findPathsOfLengthTwo(matrix, squareE) {
     }
     return paths;
 }
-
 
 
 const twoLength = (findPathsOfLengthTwo(dirMatrix, powerMatrix(dirMatrix, 2)));

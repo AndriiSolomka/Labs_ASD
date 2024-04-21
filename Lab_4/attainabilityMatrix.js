@@ -12,16 +12,15 @@ function addIMatrices(matrix1, matrix2) {
     }
     return result;
 }
-// Добавление единичной матрицы в начало
+// Додавання одиничної матриці
 let resultMatrix = addIMatrices(createIdentityMatrix(vertexCount), dirMatrix);
 
 
 
-for (let i = 2; i <= vertexCount-1; i++) {
+for (let i = 0; i <= vertexCount-1; i++) {
     const poweredMatrix = powerMatrix(dirMatrix, i);
     resultMatrix = addIMatrices(resultMatrix, poweredMatrix);
 }
-
 
 
 function applyBooleanMap(matrix) {
@@ -35,7 +34,7 @@ function applyBooleanMap(matrix) {
     return result;
 }
 
-// Применение булева отображения к результатной матрице
+// Булеве відображення
 const attainabilityMat = applyBooleanMap(resultMatrix);
 
 
