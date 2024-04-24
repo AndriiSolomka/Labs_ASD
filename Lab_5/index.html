@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Beautiful Canvas</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        #canvas-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        canvas {
+            background: linear-gradient(45deg, #b4b4b4, #e0dbdb);
+            border: 3px solid #555;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease-out;
+        }
+
+        #show-creator-btn {
+            margin-top: 20px;
+            padding: 15px 30px;
+            border: none;
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #show-creator-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .bfs {
+            margin-top: 20px;
+            padding: 15px 30px;
+            border: none;
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .bfs:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .dfs {
+            margin-top: 20px;
+            padding: 15px 30px;
+            border: none;
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .dfs:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div id="canvas-container">
+    <canvas id="my-canvas" width="1800" height="700"></canvas>
+    <button id="show-creator-btn">Show Creator</button>
+    <button class="bfs">BFS</button>
+    <button class="dfs">DFS</button>
+</div>
+
+<script type="module" src="./main.js"></script>
+<script type="module" src="./const.js"></script>
+<script type="module" src="./graphMatrices.js"></script>
+<script type="module" src="./drawVertex.js"></script>
+<script type="module" src="./conectedCoord.js"></script>
+<script type="module" src="./drawLines.js"></script>
+<script type="module" src="./drawGraphs.js"></script>
+<script type="module" src="./dfs.js"></script>
+<script type="module" src="./bfs.js"></script>
+<script type="module" src="./button.js"></script>
+<script>
+    document.getElementById('show-creator-btn').addEventListener('click', function() {
+        alert('Лабораторна работа №5 Соломки Андрія ІМ-31');
+    });
+</script>
+</body>
+</html>
