@@ -21,7 +21,7 @@ const vertexColors = [
     "magenta",
     "purple",
     "cyan",
-    "magenta",
+    "white",
     "pink",
     "teal",
     "lime",

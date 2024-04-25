@@ -1,4 +1,4 @@
-import { dirVertexCoord,secondVertexCoord } from "./drawVertex.js";
+import { dirVertexCoord,secondVertexCoord, smallCircleCoord } from "./drawVertex.js";
 
 //ЗВ'ЯЗОК КООРДИНАТ ВЕРШИН З МАТРИЦЕЮ
 let dirVertexMatrix = {};
@@ -9,10 +9,15 @@ dirVertexCoord.forEach((vertex, index) => {
 });
 
 
-let secondVertexMatrix = {};
+let graphCoords = {};
 secondVertexCoord.forEach((vertex, index) => {
-    secondVertexMatrix[index] = vertex;
+    graphCoords[index] = vertex;
+});
+
+let smallVertexCoords = {};
+smallCircleCoord.forEach((vertex, index) => {
+    smallVertexCoords[index] = vertex;
 });
 
 
-export {dirVertexMatrix, secondVertexMatrix}
+export {dirVertexMatrix, graphCoords,smallVertexCoords}

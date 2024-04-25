@@ -50,7 +50,8 @@ let drawLoopArrow = (startEl, arrowSize = 8, arrowColor = 'green') =>{
 
 
 //МАЛЮВАННЯ ЛІНІЇ
-let drawLine = (start, end) => {
+
+let drawLine = (start, end, color) => {
     let angle = Math.atan2(end.y - start.y, end.x - start.x);
     let startX = start.x + radius * Math.cos(angle);
     let startY = start.y + radius * Math.sin(angle);
@@ -59,18 +60,16 @@ let drawLine = (start, end) => {
 
     ctx.beginPath();
     ctx.moveTo(startX, startY);
+    ctx.strokeStyle = color;
     ctx.lineTo(arrowEndX, arrowEndY);
     ctx.stroke();
 
-    return {angle,arrowEndX,arrowEndY}
+    return { angle, arrowEndX, arrowEndY };
 }
 
-
-
 //МАЛЮВАННЯ ЛІНІЇ ЗІ СТРІЛКОЮ
-let drawLineArrow = (start, end) =>{
-
-    let line = drawLine(start, end);
+let drawLineArrow = (start, end, color) => {
+    let line = drawLine(start, end, color);
     let angle = line.angle;
 
     angle = Math.atan2(end.y - start.y, end.x - start.x);
@@ -81,6 +80,7 @@ let drawLineArrow = (start, end) =>{
     ctx.save();
     ctx.translate(arrowEndX, arrowEndY);
     ctx.rotate(angle);
+    ctx.fillStyle = color;
     ctx.beginPath();
     ctx.moveTo(0, 0);
     ctx.lineTo(-10, 5);
@@ -88,12 +88,11 @@ let drawLineArrow = (start, end) =>{
     ctx.closePath();
     ctx.fill();
     ctx.restore();
-
 }
 
 
 //МАЛЮВАННЯ ДУГИ
-let drawArc = (start, end,arcAngle = 2, arrowDistance = 20, bendAngle = Math.PI / 8) => {
+let drawArc = (start, end, color, arcAngle = 2, arrowDistance = 20, bendAngle = Math.PI / 8) => {
     let angle = Math.atan2(end.y - start.y, end.x - start.x);
     let startX = start.x + radius * Math.cos(angle);
     let startY = start.y + radius * Math.sin(angle);
@@ -121,16 +120,16 @@ let drawArc = (start, end,arcAngle = 2, arrowDistance = 20, bendAngle = Math.PI 
     ctx.beginPath();
     ctx.moveTo(startX, startY);
     ctx.quadraticCurveTo(controlX, controlY, newEndX, newEndY);
+    ctx.strokeStyle = color; 
     ctx.stroke();
 
     return { newEndX, newEndY, controlX, controlY};
 }
 
-
 //МАЛЮВАННЯ ДУГИ ЗА СТРІЛКОЮ
-let drawArcArrow = (start, end, arcAngle = 2, arrowDistance = 20, arrowSize = 10, arrowColor = 'blue', bendAngle = Math.PI / 1) => {
+let drawArcArrow = (start, end, color, arcAngle = 2, arrowDistance = 20, arrowSize = 10, arrowColor = 'blue', bendAngle = Math.PI / 1) => {
 
-    let arrow = drawArc(start, end,arcAngle, arrowDistance, bendAngle);
+    let arrow = drawArc(start, end, color, arcAngle, arrowDistance, bendAngle);
     let newEndX = arrow.newEndX;
     let newEndY = arrow.newEndY;
     let controlX = arrow.controlX;

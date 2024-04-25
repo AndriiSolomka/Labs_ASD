@@ -12,6 +12,11 @@ class AlgorithmsDFS {
     stackDel() {
         this.roads.push([this.element.at(-1), 'closed'])
         this.element.pop();
+
+        if(this.element.length !== 0){
+            this.roads.push([this.element.at(-1), 'active'])
+        }
+
     }
 
     peekStack() {
@@ -22,12 +27,11 @@ class AlgorithmsDFS {
         if(this.element.length !== 0){
             this.roads.push([this.element.at(-1), 'visited'])
         }
-
         return this.element.length === 0;
     }
 
     doRoads(){
-        return console.log(this.roads)
+        return this.roads
     }
 }
 
@@ -61,7 +65,7 @@ class AlgorithmsBFS {
     }
 
     doRoad(){
-        console.log(this.roads)
+      return this.roads
     }
 
 }

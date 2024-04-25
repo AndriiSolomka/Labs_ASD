@@ -1,9 +1,10 @@
 
 import {drawArc,drawArcArrow,drawLine,drawLineArrow,drawLoop,drawLoopArrow} from './drawLines.js'
-import { dirVertexMatrix, secondVertexMatrix } from './conectedCoord.js';
-import { dirVertexCoord, secondVertexCoord } from './drawVertex.js';
-import {drawCircle} from "./drawVertex.js";
-import {ctx} from "./const.js";
+import { dirVertexMatrix, graphCoords, smallVertexCoords } from './conectedCoord.js';
+import { dirVertexCoord, secondVertexCoord} from './drawVertex.js';
+import {drawCircle, statusVertex, smallCircleCoord} from "./drawVertex.js";
+import {ctx, radius} from "./const.js";
+
 
 //ЧИ Є МІЖ ДВОМА ВЕРШИНАМИ 3?
 let findAdjacentVertices = (v1, v2, coords) => {
@@ -71,42 +72,79 @@ let drawDirGraph = (dirMatrix) =>{
     }
 }
 
-function drawGraph(element, color){
-    const firstEl = element[0]
-    const secondEl = element[1]
+let activeArr = []
 
-    const values = {
-        x: (secondVertexMatrix[firstEl].x),
-        y: (secondVertexMatrix[firstEl].y),
-        x2 : (secondVertexMatrix[secondEl].x),
-        y2 : (secondVertexMatrix[secondEl].y),
-        color: color[firstEl],
-        number1: firstEl+1,
-    }
+function drawGraphDFS(element, color){
 
-   drawCircle(ctx, values.x, values.y, values.number1, values.color)
+    const firstEl = element[0];
+    const secondEl = element[1];
 
-    if(element[1] === 0){
-        drawCircle(ctx, values.x, values.y, values.number1, values.color)
 
-    } else if(findAdjacentVertices(secondVertexMatrix[firstEl], secondVertexMatrix[secondEl], secondVertexCoord)){
-        setTimeout(()=>{
-            drawArcArrow(secondVertexMatrix[firstEl], secondVertexMatrix[secondEl]);
-            drawCircle(ctx, values.x2, values.y2, secondEl+1, values.color)
-        }, 1000)
-        
+        if(secondEl === 'active'){
+            activeArr.push(firstEl)
+            statusVertex(ctx, smallVertexCoords[firstEl].x, smallVertexCoords[firstEl].y, 'a')
+            drawCircle(ctx, graphCoords[firstEl].x, graphCoords[firstEl].y, firstEl+1, color[firstEl])
 
-    } else {
-        setTimeout(()=>{
-            drawLineArrow(secondVertexMatrix[firstEl], secondVertexMatrix[secondEl]);
-            drawCircle(ctx, values.x2, values.y2, secondEl+1, values.color)
-        }, 1000)
-        
-    }
+        }
 
-  
+        if(secondEl === 'visited' ) {
+            statusVertex(ctx, smallVertexCoords[firstEl].x, smallVertexCoords[firstEl].y, 'v');
+        }
+
+        if(activeArr.length === 2){
+
+            if(findAdjacentVertices(graphCoords[activeArr[0]], graphCoords[activeArr[1]], secondVertexCoord)){
+                drawArcArrow(graphCoords[activeArr[0]], graphCoords[activeArr[1]], color[activeArr[0]]);
+
+            } else {
+                drawLineArrow(graphCoords[activeArr[0]], graphCoords[activeArr[1]], color[activeArr[0]])
+            }
+            activeArr.shift()
+
+        }
+
+        if(secondEl === 'closed'){
+            statusVertex(ctx, smallVertexCoords[firstEl].x, smallVertexCoords[firstEl].y, 'c');
+            activeArr = []
+        }
+
 
 }
 
 
-export {drawDirGraph, drawGraph}
+function drawGraphBFS (element, color){
+    const firstEl = element[0];
+    const secondEl = element[1];
+
+
+    if(secondEl === 'active'){
+
+        statusVertex(ctx, smallVertexCoords[firstEl].x, smallVertexCoords[firstEl].y, 'a')
+        drawCircle(ctx, graphCoords[firstEl].x, graphCoords[firstEl].y, firstEl+1, color[firstEl])
+        activeArr.push(firstEl)
+    }
+
+    if(secondEl === 'visited' && activeArr.length !== 0) {
+
+        if(findAdjacentVertices(graphCoords[activeArr[0]], graphCoords[firstEl], secondVertexCoord)){
+            drawArcArrow(graphCoords[activeArr[0]], graphCoords[firstEl], color[activeArr[0]]);
+
+        } else {
+            drawCircle(ctx, graphCoords[firstEl].x, graphCoords[firstEl].y, firstEl+1, color[activeArr])
+            drawLineArrow(graphCoords[activeArr[0]], graphCoords[firstEl], color[activeArr[0]])
+            statusVertex(ctx, smallVertexCoords[firstEl].x, smallVertexCoords[firstEl].y, 'v');
+        }
+
+    }
+
+    if(secondEl === 'closed'){
+        statusVertex(ctx, smallVertexCoords[firstEl].x, smallVertexCoords[firstEl].y, 'c');
+        activeArr = []
+    }
+
+}
+
+
+
+export {drawDirGraph, drawGraphDFS, drawGraphBFS}
+

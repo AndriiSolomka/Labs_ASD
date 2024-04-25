@@ -1,14 +1,14 @@
 import {dfsResult} from "./dfs.js";
 import {bfsResult} from "./bfs.js";
 import {vertexColors} from "./const.js";
-import {drawGraph} from "./drawGraphs.js";
+import {drawGraphDFS, drawGraphBFS } from "./drawGraphs.js";
 
 const dfsBtn = document.querySelector('.dfs');
 let step = 0;
 
 dfsBtn.addEventListener('click', () => {
     if (step < dfsResult.length) {
-        drawGraph(dfsResult.at(step), vertexColors);
+        drawGraphDFS(dfsResult.at(step), vertexColors);
 
         step++;
     } else {
@@ -23,7 +23,7 @@ bfsBtn.addEventListener('click', () => {
     
 
     if (step < bfsResult.length) {
-        drawGraph(bfsResult.at(step), vertexColors);
+        drawGraphBFS(bfsResult.at(step), vertexColors);
    
         step++;
     } else {

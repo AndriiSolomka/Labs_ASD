@@ -12,11 +12,6 @@ const DFS = (matrix) => {
     let k = 1;
 
     const findRoads = (start) => {
-
-        const roads = {
-            res: []
-        };
-
         dfs[start] = 1;
         s.stackAd(start);
 
@@ -30,7 +25,6 @@ const DFS = (matrix) => {
                     dfsMatrix[v][i] = 1;
                     dfs[i] = k;
                     s.stackAd(i);
-                    roads.res.push([v, i]);
                     found = true;
                     break;
                 }
@@ -41,7 +35,6 @@ const DFS = (matrix) => {
             
         }
 
-        return roads;
     };
 
     for (let i = 0; i < matrix.length; i++) {
@@ -50,7 +43,8 @@ const DFS = (matrix) => {
         }
     }
 
-     s.doRoads()
+    const myDFSroads = s.doRoads()
+    console.log('roadsDFS', myDFSroads)
 
 
     console.group('Матриця DFS')
@@ -58,10 +52,7 @@ const DFS = (matrix) => {
     console.groupEnd()
 
 
-
-
-
-    return 1;
+    return myDFSroads;
 };
 
 const dfsResult = DFS(dirMatrix);

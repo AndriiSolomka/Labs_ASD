@@ -9,7 +9,7 @@ const BFS = (matrix) => {
     const bfs = Array.from({ length: matrix.length }, () => 0);
     let k = 1;
 
-    const allRoads = [];
+
 
     const findRoads = (start) =>{
 
@@ -41,22 +41,22 @@ const BFS = (matrix) => {
 
     for (let i = 0; i < matrix.length; i++) {
         if (bfs[i] === 0) {
-            allRoads.push(findRoads(i));
+            (findRoads(i));
         }
     }
 
-    q.doRoad()
+    const bfsRoads = q.doRoad()
 
     console.group('Матриця BFS')
-    console.log(bfsMatrix)
+    console.log(bfsMatrix);
     console.groupEnd()
 
-    const bfsResult = allRoads.flatMap(item =>
-        Array.isArray(item.res[0]) ? item.res : [item.res]);
 
-    return bfsResult;
+
+    return bfsRoads;
 }
 const bfsResult = BFS(dirMatrix)
+console.log('bfsResult', bfsResult)
 export {bfsResult}
 
 
