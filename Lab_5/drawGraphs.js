@@ -90,13 +90,21 @@ function drawGraph(element, color){
         drawCircle(ctx, values.x, values.y, values.number1, values.color)
 
     } else if(findAdjacentVertices(secondVertexMatrix[firstEl], secondVertexMatrix[secondEl], secondVertexCoord)){
-        drawArcArrow(secondVertexMatrix[firstEl], secondVertexMatrix[secondEl]);
-        drawCircle(ctx, values.x2, values.y2, secondEl+1, values.color)
+        setTimeout(()=>{
+            drawArcArrow(secondVertexMatrix[firstEl], secondVertexMatrix[secondEl]);
+            drawCircle(ctx, values.x2, values.y2, secondEl+1, values.color)
+        }, 1000)
+        
 
     } else {
-        drawLineArrow(secondVertexMatrix[firstEl], secondVertexMatrix[secondEl]);
-        drawCircle(ctx, values.x2, values.y2, secondEl+1, values.color)
+        setTimeout(()=>{
+            drawLineArrow(secondVertexMatrix[firstEl], secondVertexMatrix[secondEl]);
+            drawCircle(ctx, values.x2, values.y2, secondEl+1, values.color)
+        }, 1000)
+        
     }
+
+  
 
 }
 

@@ -22,15 +22,19 @@ const BFS = (matrix) => {
 
         while (!q.empty()) {
             const v = q.queueDel()
+            console.log(`active ${v+1}`);
             for (let i = 0; i < matrix.length; i++) {
                 if (matrix[v][i] === 1 && bfs[i] === 0) {
                     k++
                     bfsMatrix[v][i] = 1
                     bfs[i] = k;
                     q.queueAdd(i)
+                    console.log(`active ${v+ 1}, visited ${i + 1}`);
                     roads.res.push([v, i])
                 }
             }
+
+            console.log(`closed ${v+ 1}`);
 
             if(roads.res.length === 0){
                 roads.res.push([v,0])
