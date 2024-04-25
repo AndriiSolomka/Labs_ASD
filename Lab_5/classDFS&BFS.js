@@ -1,61 +1,69 @@
-class Algorithms{
+class AlgorithmsDFS {
     constructor() {
         this.element = []
-        this.all = []
+        this.roads = []
     }
 
-    queueAdd(element){
+    stackAd(element) {
         this.element.push(element)
-        //console.log('add',this.element.map(el => el +1));
-    }
-
-    queueUrEl(){
-        //console.log('curEl',this.element.map(el => el +1))
-    }
-
-    queueDel() {
-        //console.log('del', this.element.map(el => el +1));
-        return this.element.shift();
-    }
-
-    stackAd(element){
-        this.element.push(element)
-       // console.log('add',this.element.map(el => el +1));
+        this.roads.push([element, 'active'])
     }
 
     stackDel() {
+        this.roads.push([this.element.at(-1), 'closed'])
         this.element.pop();
-       // console.log('del',this.element.map(el => el +1));
     }
 
     peekStack() {
         return this.element[this.element.length - 1];
     }
-    empty(){
-        //console.log('empty', this.element.map(el => el +1));
+
+    empty() {
+        if(this.element.length !== 0){
+            this.roads.push([this.element.at(-1), 'visited'])
+        }
+
         return this.element.length === 0;
     }
 
-    alls(){
-        this.all
+    doRoads(){
+        return console.log(this.roads)
     }
 }
 
-class Click {
+
+class AlgorithmsBFS {
     constructor() {
         this.element = []
+        this.roads = []
+        this.close = []
     }
 
-     addAction (action){
-        this.element.push()
+    queueAdd(element) {
+        this.element.push(element)
+        this.roads.push([this.element.at(-1), `visited`])
     }
 
-    next () {
-        if(this.element.length > 0){
-            const action = this.element.shift();
-            action(); 
+
+    queueDel() {
+        this.roads.push([this.element.at(0), 'active'])
+        this.close.push(this.element.at(0))
+        return this.element.shift();
+    }
+
+    empty() {
+        if(!this.roads.includes(this.close) && this.close.length !== 0){
+            this.roads.push([...this.close, 'closed'])
+            this.close = [];
         }
+
+        return this.element.length === 0;
     }
+
+    doRoad(){
+        console.log(this.roads)
+    }
+
 }
 
-export {Algorithms, Click}
+export {AlgorithmsDFS, AlgorithmsBFS}

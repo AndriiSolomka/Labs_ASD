@@ -3,7 +3,6 @@ import {bfsResult} from "./bfs.js";
 import {vertexColors} from "./const.js";
 import {drawGraph} from "./drawGraphs.js";
 
-console.log(dfsResult);
 const dfsBtn = document.querySelector('.dfs');
 let step = 0;
 

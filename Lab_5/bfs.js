@@ -1,11 +1,11 @@
 import {dirMatrix} from "./graphMatrices.js";
-import {Algorithms} from "./classDFS&BFS.js";
+import {AlgorithmsBFS} from "./classDFS&BFS.js";
 
 const BFS = (matrix) => {
     const bfsMatrix = matrix.map(row => [...row]);
     bfsMatrix.forEach(row => row.fill(0));
 
-    const q = new Algorithms()
+    const q = new AlgorithmsBFS()
     const bfs = Array.from({ length: matrix.length }, () => 0);
     let k = 1;
 
@@ -18,23 +18,19 @@ const BFS = (matrix) => {
         };
 
         bfs[start] = 1;
-        q.stackAd(start);
+        q.queueAdd(start);
 
         while (!q.empty()) {
             const v = q.queueDel()
-            console.log(`active ${v+1}`);
             for (let i = 0; i < matrix.length; i++) {
                 if (matrix[v][i] === 1 && bfs[i] === 0) {
                     k++
                     bfsMatrix[v][i] = 1
                     bfs[i] = k;
                     q.queueAdd(i)
-                    console.log(`active ${v+ 1}, visited ${i + 1}`);
                     roads.res.push([v, i])
                 }
             }
-
-            console.log(`closed ${v+ 1}`);
 
             if(roads.res.length === 0){
                 roads.res.push([v,0])
@@ -49,8 +45,10 @@ const BFS = (matrix) => {
         }
     }
 
+    q.doRoad()
+
     console.group('Матриця BFS')
-    console.log(bfsMatrix);
+    console.log(bfsMatrix)
     console.groupEnd()
 
     const bfsResult = allRoads.flatMap(item =>
