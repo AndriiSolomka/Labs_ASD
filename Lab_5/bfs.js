@@ -51,12 +51,16 @@ const BFS = (matrix) => {
     console.log(bfsMatrix);
     console.groupEnd()
 
+    console.group('Вектор BFS')
+    bfs.map((item, index)=>{
+        console.log(`The new number of vertex ${index + 1} is ${item}`);
+    });
+    console.groupEnd()
 
 
     return bfsRoads;
 }
 const bfsResult = BFS(dirMatrix)
-console.log('bfsResult', bfsResult)
 export {bfsResult}
 
 

@@ -44,11 +44,16 @@ const DFS = (matrix) => {
     }
 
     const myDFSroads = s.doRoads()
-    console.log('roadsDFS', myDFSroads)
 
 
     console.group('Матриця DFS')
     console.log(dfsMatrix);
+    console.groupEnd()
+
+    console.group('Вектор DFS')
+    dfs.map((item, index)=>{
+        console.log(`The new number of vertex ${index + 1} is ${item}`);
+    });
     console.groupEnd()
 
 
