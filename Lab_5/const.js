@@ -20,9 +20,9 @@ const vertexColors = [
     "yellow",
     "magenta",
     "purple",
-    "cyan",
-    "white",
-    "pink",
+    "orange",
+    "gray",
+    "aqua",
     "teal",
     "lime",
     "brown"
