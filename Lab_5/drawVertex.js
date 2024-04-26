@@ -54,7 +54,7 @@ let drawnGraphVertex = (ctx, vertexBetweenSpace, x = startDirX, y = startY, radi
     let curY = y;
     let vertexNumber = 1;
     let vertices = [];
-    let status = "н"
+    let status = "n"
 
     for (let i = 0; i < vertexCount; i++) {
         let vertex = drawCircle(ctx, curX, curY, status, 'red', radius);
