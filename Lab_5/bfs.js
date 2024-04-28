@@ -12,11 +12,6 @@ const BFS = (matrix) => {
 
 
     const findRoads = (start) =>{
-
-        const roads = {
-            res: []
-        };
-
         bfs[start] = 1;
         q.queueAdd(start);
 
@@ -28,15 +23,9 @@ const BFS = (matrix) => {
                     bfsMatrix[v][i] = 1
                     bfs[i] = k;
                     q.queueAdd(i)
-                    roads.res.push([v, i])
                 }
             }
-
-            if(roads.res.length === 0){
-                roads.res.push([v,0])
-            }
         }
-        return roads;
     }
 
     for (let i = 0; i < matrix.length; i++) {
