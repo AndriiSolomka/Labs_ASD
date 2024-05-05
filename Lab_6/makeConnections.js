@@ -130,5 +130,4 @@ function kruskal(matrix) {
 const result = kruskal(weightMatrix);
 console.log("List", result);
 const minimumSpanningTree = result.printValues();
-console.log("minimumSpanningTree", minimumSpanningTree);
 export { minimumSpanningTree };

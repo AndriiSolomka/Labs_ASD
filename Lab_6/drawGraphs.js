@@ -32,49 +32,7 @@ let findAdjacentVertices = (v1, v2, coords) => {
 };
 
 //МАЛЮВАННЯ DirGraph
-let drawDirGraph = (dirMatrix) => {
-  // let dirMat = dirMatrix;
-  //
-  // for(let i = 0; i < dirMat.length; i++){
-  //     for(let j = i; j < dirMat.length; j++){
-  //
-  //         if((dirMat[i][j] === 1 || dirMat[j][i] === 1)  && !(dirMat[i][j] === 1 && dirMat[j][i] === 1) ){
-  //
-  //             if(findAdjacentVertices(dirVertexMatrix[i], dirVertexMatrix[j], dirVertexCoord)){
-  //
-  //                 if(dirMat[i][j] === 1 && i < j){
-  //                     drawArcArrow(dirVertexMatrix[i], dirVertexMatrix[j]);
-  //
-  //                 } else{
-  //                     drawArcArrow(dirVertexMatrix[j], dirVertexMatrix[i]);
-  //                 }
-  //
-  //             } else if(dirMat[i][j] === 1 && i < j){
-  //                 drawLineArrow(dirVertexMatrix[i], dirVertexMatrix[j]);
-  //             } else{
-  //                 drawLineArrow(dirVertexMatrix[j], dirVertexMatrix[i]);
-  //             }
-  //
-  //         }else if(dirMat[i][j] === 1 && dirMat[j][i] === 1){
-  //
-  //             if((findAdjacentVertices(dirVertexMatrix[i], dirVertexMatrix[j], dirVertexCoord))){
-  //
-  //                 drawArcArrow(dirVertexMatrix[i], dirVertexMatrix[j]);
-  //                 drawArcArrow(dirVertexMatrix[j], dirVertexMatrix[i]);
-  //
-  //             } else if(dirMat[i][j] === 1 && i === j){
-  //                 drawLoopArrow(dirVertexMatrix[i]);
-  //
-  //             }else {
-  //
-  //                 drawArcArrow(dirVertexMatrix[j], dirVertexMatrix[i]);
-  //                 drawLineArrow(dirVertexMatrix[i], dirVertexMatrix[j]);
-  //
-  //             }
-  //         }
-  //     }
-  // }
-};
+let drawDirGraph = (dirMatrix) => {};
 
 //МАЛЮВАННЯ UnDirGraph
 let drawUnDirGraph = (unDirMatrix, colors) => {
